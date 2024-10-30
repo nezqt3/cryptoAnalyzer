@@ -79,7 +79,7 @@ public class CaesarCipher {
 					System.out.println("Такого пути не существует");
 					return;
 				}
-				String stringOther = fileManager.readFile(pathToFile);
+				String stringOther = fileManager.readFile(pathToFileAnother);
 				System.out.println(bruteForce.findOutTheNearestDecryption(stringBrute.toLowerCase(), stringOther.toLowerCase()));
 			}
 		}

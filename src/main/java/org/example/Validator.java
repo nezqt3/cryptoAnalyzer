@@ -6,7 +6,7 @@ import java.nio.file.Path;
 public class Validator {
 
 	Cipher cipher = new Cipher();
-	public char[] alphabet = cipher.alphabet;
+	public char[] alphabet = cipher.getAlphabet();
 
 	public boolean isValidKey(int key) {
 		if (key > alphabet.length || key < 0) {

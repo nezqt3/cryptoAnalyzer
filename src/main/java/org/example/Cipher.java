@@ -1,13 +1,17 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Locale;
-
 public class Cipher {
 
-	public final String ALPHABET = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя.,””:-!? ";
-	public final char[] alphabet = ALPHABET.toCharArray();
+	private final String ALPHABET = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя.,””:-!? ";
+	private final char[] alphabet = ALPHABET.toCharArray();
+
+	public String getALPHABET() {
+		return ALPHABET;
+	}
+
+	public char[] getAlphabet() {
+		return alphabet;
+	}
 
 	public String encrypt(String inputText, int key) {
 		String result = "";

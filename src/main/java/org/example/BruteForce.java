@@ -5,8 +5,8 @@ import java.util.*;
 public class BruteForce {
 
 	private static Cipher cipher = new Cipher();
-	public final String ALPHABET = cipher.ALPHABET;
-	public static final char[] alphabet = cipher.alphabet;
+	public final String ALPHABET = cipher.getALPHABET();
+	public static final char[] alphabet = cipher.getAlphabet();
 
 	public String decryptByBruteForce(String encryptedText) {
 
@@ -31,6 +31,7 @@ public class BruteForce {
 	public String findOutTheNearestDecryption(String encryptedText, String textForExample) {
 
 		List<String> stringList = List.of(textForExample.split(" "));
+
 		Map<String, Integer> mapCounter = new HashMap<>();
 
 		for (int i = 0; i < alphabet.length; i++) {
@@ -44,6 +45,7 @@ public class BruteForce {
 				result += alphabet[indexOfAlphabet];
 			}
 			List<String> resultList = List.of(result.split(" "));
+
 			int count = 0;
 			for (var elem : stringList) {
 				for (var el : resultList) {
@@ -58,6 +60,7 @@ public class BruteForce {
 		}
 
 		int mx = 0;
+
 		for (var value : mapCounter.entrySet()) {
 			mx = Math.max(value.getValue(), mx);
 		}
