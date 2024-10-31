@@ -16,6 +16,7 @@ public class Cipher {
 		return alphabet;
 	}
 
+	// шифрование заданного текста по ключу
 	public String encrypt(String inputText, int key) {
 		String result = "";
 		inputText = inputText.toLowerCase();
@@ -30,6 +31,7 @@ public class Cipher {
 		return result;
 	}
 
+	// дешифрование заданного ключа по ключу
 	public String decrypt(String inputText, int key) {
 		String result = "";
 		inputText = inputText.toLowerCase();

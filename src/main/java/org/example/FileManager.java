@@ -8,6 +8,7 @@ import java.util.List;
 
 public class FileManager {
 
+	// Прочитать файл
 	public String readFile(String filePath) throws IOException {
 		Path path = Path.of(filePath);
 		List<String> lines = Files.readAllLines(path);
@@ -18,6 +19,7 @@ public class FileManager {
 		return result;
 	}
 
+	// Записать в файл
 	public void writeFile(String content, String filePath){
 		try (FileWriter fileWriter = new FileWriter(filePath)) {
 			fileWriter.write(content);

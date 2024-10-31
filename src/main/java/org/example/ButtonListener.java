@@ -2,20 +2,25 @@ package org.example;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
-public class ButtonListener implements ActionListener {
+public class ButtonListener implements ActionListener{
 
+	// Обработчик событий
 	@Override
 	public void actionPerformed(ActionEvent e) {
+
+		final GraphicUI ui = new GraphicUI();
+
 		String command = e.getActionCommand();
-		if (command.equals("Шифр")) {
-			System.out.println("Хайп");
+		if (command.equals("шифр")) {
+			ui.shifrFrame();
 		} else if (command.equals("Дешифр")) {
-			System.out.println("Не хайп");
+			ui.deShifrFrame();
 		} else if (command.equals("анализ")) {
-			System.out.println("аналитический хайп");
+			ui.brutaForceFrame();
 		} else if (command.equals("форс")) {
-			System.out.println("брутевский хайп");
+			ui.statisticalAnalyzeFrame();
 		}
 	}
 

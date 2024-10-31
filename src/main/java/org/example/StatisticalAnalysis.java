@@ -1,18 +1,15 @@
 package org.example;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class StatisticalAnalysis {
 
 	public Cipher cipher = new Cipher();
 	public char[] cipherAlphabet = cipher.getAlphabet();
 
+	// Вывод возможного ключа, основанный на метрике по тексту
 	public int findMostLikelyShift(String encryptedText, String representativeText) {
 
 		HashMap<Character, Integer> mapTextForEncryptedText = new HashMap<>();
@@ -55,7 +52,7 @@ public class StatisticalAnalysis {
 			}
 			listOfHashMap.add(mapTextForInputText);
 		}
-		return -1;
+		return 0;
 	}
 
 }

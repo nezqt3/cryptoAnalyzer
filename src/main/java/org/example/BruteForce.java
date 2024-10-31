@@ -10,6 +10,7 @@ public class BruteForce {
 	public final String ALPHABET = cipher.getALPHABET();
 	public static final char[] alphabet = cipher.getAlphabet();
 
+	// вывод всех возможных вариантов дешифрования
 	public String decryptByBruteForce(String encryptedText) {
 
 		String resultAll = "";
@@ -30,6 +31,7 @@ public class BruteForce {
 		return resultAll;
 	}
 
+	// Вывод наиболее подходящего варианта дешифрования
 	public String findOutTheNearestDecryption(String encryptedText, String textForExample) {
 
 		List<String> stringList = List.of(textForExample.split(" "));

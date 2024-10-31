@@ -8,6 +8,7 @@ public class Validator {
 	Cipher cipher = new Cipher();
 	public char[] alphabet = cipher.getAlphabet();
 
+	// Проверка ключа
 	public boolean isValidKey(int key) {
 		if (key > alphabet.length || key < 0) {
 			return false;
@@ -16,6 +17,7 @@ public class Validator {
 		}
 	}
 
+	// Проверка наличия файла в системе
 	public boolean isFileExists(String filePath) {
 		if (Files.exists(Path.of(filePath))) {
 			return true;
