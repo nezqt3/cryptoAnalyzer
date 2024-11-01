@@ -1,0 +1,48 @@
+[33mcommit 7e5dcc3364f7024930e34062fdad0f7ed50eec35[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: nezqt3 <dalekseenko8@gmail.com>
+Date:   Fri Nov 1 01:44:34 2024 +0300
+
+    git commit -m "измения в графический интерфейс"
+
+[33mcommit c42afb774ecc912e4bec0fa3bd4e76c2569cd8f3[m
+Author: nezqt3 <dalekseenko8@gmail.com>
+Date:   Fri Nov 1 01:43:59 2024 +0300
+
+    измения в графический интерфейс
+
+[33mcommit ad6ec302839fc6ae83a1f00878063ee1ea400a19[m
+Author: nezqt3 <dalekseenko8@gmail.com>
+Date:   Thu Oct 31 01:43:59 2024 +0300
+
+    Старт разработки ui интерфейса
+
+[33mcommit 68e79413aa31cf1ad37c08b2f82737070b24f040[m
+Merge: 3bdd36e 98fd576
+Author: nezqt3 <dalekseenko8@gmail.com>
+Date:   Thu Oct 31 00:52:49 2024 +0300
+
+    Merge remote-tracking branch 'origin/master'
+
+[33mcommit 3bdd36e73a273f7b592078da469dbe2ca62f7413[m
+Author: nezqt3 <dalekseenko8@gmail.com>
+Date:   Thu Oct 31 00:52:23 2024 +0300
+
+    создание логикидляStaticalAnalysis.java
+
+[33mcommit cd40f93fc834d3d39a8c316f1016c91f73effa3e[m
+Author: nezqt3 <dalekseenko8@gmail.com>
+Date:   Thu Oct 31 00:51:16 2024 +0300
+
+    создание логики для StaticalAnalysis.java
+
+[33mcommit 98fd57649da444ebaf4f996828a62c816a5a4090[m
+Author: nezqt3 <167674366+nezqt3@users.noreply.github.com>
+Date:   Wed Oct 30 02:45:44 2024 +0300
+
+    Create README.md
+
+[33mcommit 394598b3cd235263e7cb1051f517d18e0e329e46[m[33m ([m[1;32mmain[m[33m)[m
+Author: nezqt3 <dalekseenko8@gmail.com>
+Date:   Wed Oct 30 02:40:49 2024 +0300
+
+    create mainApp.java BruteForce.java Validator.java StatisticalAnalysis.java CaesarCipher.java Cipher.java

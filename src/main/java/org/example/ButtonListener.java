@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-public class ButtonListener implements ActionListener{
+public class ButtonListener implements ActionListener {
 
 	// Обработчик событий
 	@Override
@@ -15,7 +15,7 @@ public class ButtonListener implements ActionListener{
 		String command = e.getActionCommand();
 		if (command.equals("шифр")) {
 			ui.shifrFrame();
-		} else if (command.equals("Дешифр")) {
+		} else if (command.equals("дешифр")) {
 			ui.deShifrFrame();
 		} else if (command.equals("анализ")) {
 			ui.brutaForceFrame();
