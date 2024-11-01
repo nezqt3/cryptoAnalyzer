@@ -2,4 +2,4 @@
 День 1. - Создание файлов и логики в MainApp.java, BruteForce.java, Validator.java, CaesarCipher.java, Cipher.java. Логики в StatisticalAnalyzer.java - нет
 День 2. - Создана логика в StatisticalAnalyzer.java и началась разработка UI интерфейса
 День 3. - Продолжается разработка UI интерфейса
-День 4. - Создание логики для окно: шифрования и дешифрования
+День 4. - Создание логики для окон: шифрования и дешифрования
