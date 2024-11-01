@@ -2,11 +2,10 @@ package org.example;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
 public class ButtonListener implements ActionListener {
 
-	// Обработчик событий
+	// Обработчик событий открытия окон
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
@@ -17,9 +16,9 @@ public class ButtonListener implements ActionListener {
 			ui.shifrFrame();
 		} else if (command.equals("дешифр")) {
 			ui.deShifrFrame();
-		} else if (command.equals("анализ")) {
-			ui.brutaForceFrame();
 		} else if (command.equals("форс")) {
+			ui.brutaForceFrame();
+		} else if (command.equals("анализ")) {
 			ui.statisticalAnalyzeFrame();
 		}
 	}

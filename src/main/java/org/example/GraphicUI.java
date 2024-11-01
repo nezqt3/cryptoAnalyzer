@@ -2,8 +2,6 @@ package org.example;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.event.MenuKeyListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,7 +9,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class GraphicUI extends CaesarCipher{
+public class GraphicUI extends CaesarCipher {
 
 	private final String PATH_OF_ICON = "src\\main\\resources\\static\\eth-crypto-cryptocurrency-cryptocurrencies-cash-money-bank-payment_95149.png";
 	private final String PATH_TO_IMAGE_MAIN = "src\\main\\resources\\static\\Leonardo_Phoenix_A_modern_and_stylish_illustration_of_a_crypto_1.jpg";
