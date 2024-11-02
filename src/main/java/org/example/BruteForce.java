@@ -5,8 +5,8 @@ import java.util.*;
 public class BruteForce {
 
 	private static Cipher cipher = new Cipher();
-	public final String ALPHABET = cipher.getALPHABET();
-	public static final char[] alphabet = cipher.getAlphabet();
+	private final String ALPHABET = cipher.getALPHABET();
+	private static final char[] alphabet = cipher.getAlphabet();
 
 	// вывод всех возможных вариантов дешифрования
 	public String decryptByBruteForce(String encryptedText) {

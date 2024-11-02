@@ -16,6 +16,7 @@ public class GraphicUI extends CaesarCipher {
 
 	private int keyCipher = 0;
 	private String resultText = "";
+	private String otherText = "";
 	private String customText = "";
 	private JTextField field;
 	private JFrame frame;
@@ -45,10 +46,16 @@ public class GraphicUI extends CaesarCipher {
 		menuItem1.setActionCommand("дешифр");
 		JMenu menu2 = new JMenu("Бруте-форс");
 		JMenuItem menuItem2 = new JMenuItem("Все");
+		menuItem2.addActionListener(listener);
+		menuItem2.setActionCommand("форс все");
 		JMenuItem menuItem3 = new JMenuItem("Подходящего");
+		menuItem3.addActionListener(listener);
+		menuItem3.setActionCommand("форс один");
 		menu2.add(menuItem2);
 		menu2.add(menuItem3);
 		JMenuItem menuItem4 = new JMenuItem("Статический анализ");
+		menuItem4.addActionListener(listener);
+		menuItem4.setActionCommand("анализ");
 		menu1.add(menuItem);
 		menu1.add(menuItem1);
 		menu1.add(menu2);
@@ -92,7 +99,7 @@ public class GraphicUI extends CaesarCipher {
 		// Задаю логику чтения файла и записи с шифрованием
 		JLabel label = new JLabel("Тут будет прочитанный текст");
 		JPanel panelLabel = new JPanel();
-		JFileChooser fileChooser = new JFileChooser("D:\\JavaProjects\\ProjectsJavaRush\\src\\main\\resources\\txtFiles");
+		JFileChooser fileChooser = new JFileChooser("src\\main\\resources\\txtFiles");
 		JButton buttonOpenDir = new JButton("Открыть файл");
 		panelLabel.add(buttonOpenDir);
 		// Действие чтения файла
@@ -229,14 +236,156 @@ public class GraphicUI extends CaesarCipher {
 		frame.setVisible(true);
 	}
 
-	// Открытие окна бруте-форса
-	public void brutaForceFrame() {
+	// Открытие окна бруте-форса с выводом всех вариантов
+	public void brutaForceFrameAll() {
 		frame = new JFrame("Бруте-форс");
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		frame.setSize(900, 900);
+		frame.setSize(500, 500);
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
+
+		// Задаю логику чтения файла и записи с шифрованием
+		JLabel label = new JLabel("Тут будет результат работы программы");
+		JPanel panelLabel = new JPanel();
+		JFileChooser fileChooser = new JFileChooser("src\\main\\resources\\txtFiles");
+		JButton buttonOpenDir = new JButton("Открыть файл");
+		panelLabel.add(buttonOpenDir);
+		// Действие чтения файла
+		buttonOpenDir.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e){
+				fileChooser.setDialogTitle("Открыть файл");
+				fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+				resultText = "";
+				int result = fileChooser.showOpenDialog(fileChooser);
+				if (result == JFileChooser.APPROVE_OPTION) {
+					try {
+						resultText = fileManager.readFile(String.valueOf(fileChooser.getSelectedFile()));
+					} catch (IOException ex) {
+						System.out.println(e);
+					}
+					JOptionPane.showMessageDialog(fileChooser, fileChooser.getSelectedFile());
+					label.setText(resultText);
+				}
+			}
+		});
+		JButton saveDir = new JButton("Сохранить файл");
+		panelLabel.add(saveDir);
+		// Сохранение файла
+		saveDir.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				fileChooser.setDialogTitle("Сохранение файла");
+				fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+				int result = fileChooser.showSaveDialog(fileChooser);
+				if (result == JFileChooser.APPROVE_OPTION) {
+					JOptionPane.showMessageDialog(fileChooser, "Файл " + fileChooser.getSelectedFile() + " сохранен");
+					fileManager.writeFile(customText, String.valueOf(fileChooser.getSelectedFile()));
+				}
+			}
+		});
+		JButton buttonPhifr = new JButton("Дешифровать");
+		panelLabel.add(buttonPhifr);
+		field = new JTextField("", 5);
+		// Действие бруте-форса
+		buttonPhifr.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				customText = bruteForce.decryptByBruteForce(resultText);
+				label.setText("Дешифрация прошла успешна");
+			}
+		});
+		panelLabel.add(field);
+		panelLabel.add(label);
+		label.setFont(new Font("Arial", Font.PLAIN, 24));
+		frame.add(panelLabel);
+	}
+
+	// Открытие окна бруте-форса в выводом определенного варианта
+	public void brutaForceFrameOne() {
+		frame = new JFrame("Бруте-форс");
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		frame.setSize(500, 500);
+		frame.setLocationRelativeTo(null);
+		frame.setResizable(false);
+
+		// Создание логики кнопок
+		JLabel label = new JLabel("Тут будет ваш ключ");
+		label.setFont(new Font("Arial", Font.PLAIN, 34));
+		JPanel panelLabel = new JPanel();
+		JFileChooser fileChooser = new JFileChooser("src\\main\\resources\\txtFiles");
+		JButton buttonOpenDir = new JButton("Открыть файл №1");
+		panelLabel.add(buttonOpenDir);
+		// Открытие изначального текстового файла
+		buttonOpenDir.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				fileChooser.setDialogTitle("Открыть файл");
+				fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+				resultText = "";
+				int result = fileChooser.showOpenDialog(fileChooser);
+				if (result == JFileChooser.APPROVE_OPTION) {
+					try {
+						resultText = fileManager.readFile(String.valueOf(fileChooser.getSelectedFile()));
+					} catch (IOException ex) {
+						System.out.println(e);
+					}
+					JOptionPane.showMessageDialog(fileChooser, fileChooser.getSelectedFile());
+					label.setText(resultText);
+				}
+			}
+		});
+		JButton buttonOpenDirOther = new JButton("Открыть файл №2");
+		panelLabel.add(buttonOpenDirOther);
+		// Открытие вспомогательного текстового файла
+		buttonOpenDirOther.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				fileChooser.setDialogTitle("Открыть файл");
+				fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+				otherText = "";
+				int result = fileChooser.showOpenDialog(fileChooser);
+				if (result == JFileChooser.APPROVE_OPTION) {
+					try {
+						otherText = fileManager.readFile(String.valueOf(fileChooser.getSelectedFile()));
+					} catch (IOException ex) {
+						System.out.println(e);
+					}
+					JOptionPane.showMessageDialog(fileChooser, fileChooser.getSelectedFile());
+				}
+			}
+		});
+		JButton analyze = new JButton("Получить дешифрование");
+		panelLabel.add(analyze);
+		// Поиск правильного дешифрования
+		analyze.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				customText = String.valueOf(bruteForce.findOutTheNearestDecryption(resultText, otherText));
+				label.setText(customText);
+			}
+		});
+		JButton writeButton = new JButton("Записать дешифрование");
+		panelLabel.add(writeButton);
+		// Запись в файл
+		writeButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				fileChooser.setDialogTitle("Сохранение файла");
+				fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+				int result = fileChooser.showSaveDialog(fileChooser);
+				if (result == JFileChooser.APPROVE_OPTION) {
+					JOptionPane.showMessageDialog(fileChooser, "Файл " + fileChooser.getSelectedFile() + " сохранен");
+					fileManager.writeFile(customText, String.valueOf(fileChooser.getSelectedFile()));
+				}
+			}
+		});
+		panelLabel.add(label);
+
+		frame.add(panelLabel);
+		frame.setVisible(true);
 	}
 
 	// Открытие окна статического анализа
@@ -244,9 +393,85 @@ public class GraphicUI extends CaesarCipher {
 		frame = new JFrame("Статический анализ");
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		frame.setSize(900, 900);
+		frame.setSize(500, 500);
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
+
+		// Создание логики кнопок
+		JLabel label = new JLabel("Тут будет ваш ключ");
+		label.setFont(new Font("Arial", Font.PLAIN, 34));
+		JPanel panelLabel = new JPanel();
+		JFileChooser fileChooser = new JFileChooser("src\\main\\resources\\txtFiles");
+		JButton buttonOpenDir = new JButton("Открыть файл №1");
+		panelLabel.add(buttonOpenDir);
+		// Открытие изначального текстового файла
+		buttonOpenDir.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				fileChooser.setDialogTitle("Открыть файл");
+				fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+				resultText = "";
+				int result = fileChooser.showOpenDialog(fileChooser);
+				if (result == JFileChooser.APPROVE_OPTION) {
+					try {
+						resultText = fileManager.readFile(String.valueOf(fileChooser.getSelectedFile()));
+					} catch (IOException ex) {
+						System.out.println(e);
+					}
+					JOptionPane.showMessageDialog(fileChooser, fileChooser.getSelectedFile());
+				}
+			}
+		});
+		JButton buttonOpenDirOther = new JButton("Открыть файл №2");
+		panelLabel.add(buttonOpenDirOther);
+		// Открытие вспомогательного текстового файла
+		buttonOpenDirOther.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				fileChooser.setDialogTitle("Открыть файл");
+				fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+				otherText = "";
+				int result = fileChooser.showOpenDialog(fileChooser);
+				if (result == JFileChooser.APPROVE_OPTION) {
+					try {
+						otherText = fileManager.readFile(String.valueOf(fileChooser.getSelectedFile()));
+					} catch (IOException ex) {
+						System.out.println(e);
+					}
+					JOptionPane.showMessageDialog(fileChooser, fileChooser.getSelectedFile());
+				}
+			}
+		});
+		JButton analyze = new JButton("Получить ключ");
+		panelLabel.add(analyze);
+		// Поиск ключа
+		analyze.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				customText = String.valueOf(statisticalAnalysis.findMostLikelyShift(resultText, otherText));
+				label.setText(customText);
+			}
+		});
+		JButton writeButton = new JButton("Записать ключ");
+		panelLabel.add(writeButton);
+		// Запись в файл
+		writeButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				fileChooser.setDialogTitle("Сохранение файла");
+				fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+				int result = fileChooser.showSaveDialog(fileChooser);
+				if (result == JFileChooser.APPROVE_OPTION) {
+					JOptionPane.showMessageDialog(fileChooser, "Файл " + fileChooser.getSelectedFile() + " сохранен");
+					fileManager.writeFile(customText, String.valueOf(fileChooser.getSelectedFile()));
+				}
+			}
+		});
+		panelLabel.add(label);
+
+		frame.add(panelLabel);
+		frame.setVisible(true);
+
 	}
 
 }

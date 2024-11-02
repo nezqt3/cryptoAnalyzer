@@ -16,8 +16,10 @@ public class ButtonListener implements ActionListener {
 			ui.shifrFrame();
 		} else if (command.equals("дешифр")) {
 			ui.deShifrFrame();
-		} else if (command.equals("форс")) {
-			ui.brutaForceFrame();
+		} else if (command.equals("форс все")) {
+			ui.brutaForceFrameAll();
+		} else if (command.equals("форс один")) {
+			ui.brutaForceFrameOne();
 		} else if (command.equals("анализ")) {
 			ui.statisticalAnalyzeFrame();
 		}
