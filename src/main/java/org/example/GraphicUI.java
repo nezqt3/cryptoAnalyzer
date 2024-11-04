@@ -155,9 +155,11 @@ public class GraphicUI extends CaesarCipher {
 			}
 		});
 		panelLabel.add(field);
-		panelLabel.add(label);
+		JPanel mainPanelWithLabel = new JPanel();
+		mainPanelWithLabel.add(label);
 		label.setFont(new Font("Arial", Font.PLAIN, 34));
-		frame.add(panelLabel);
+		frame.add(BorderLayout.CENTER, mainPanelWithLabel);
+		frame.add(BorderLayout.NORTH, panelLabel);
 
 		frame.setVisible(true);
 	}
@@ -229,9 +231,11 @@ public class GraphicUI extends CaesarCipher {
 			}
 		});
 		panelLabel.add(field);
-		panelLabel.add(label);
+		JPanel mainPanelWithLabel = new JPanel();
+		mainPanelWithLabel.add(label);
 		label.setFont(new Font("Arial", Font.PLAIN, 34));
-		frame.add(panelLabel);
+		frame.add(BorderLayout.CENTER, mainPanelWithLabel);
+		frame.add(BorderLayout.NORTH, panelLabel);
 
 		frame.setVisible(true);
 	}
@@ -287,7 +291,6 @@ public class GraphicUI extends CaesarCipher {
 		});
 		JButton buttonPhifr = new JButton("Дешифровать");
 		panelLabel.add(buttonPhifr);
-		field = new JTextField("", 5);
 		// Действие бруте-форса
 		buttonPhifr.addActionListener(new ActionListener() {
 			@Override
@@ -296,10 +299,11 @@ public class GraphicUI extends CaesarCipher {
 				label.setText("Дешифрация прошла успешна");
 			}
 		});
-		panelLabel.add(field);
-		panelLabel.add(label);
-		label.setFont(new Font("Arial", Font.PLAIN, 24));
-		frame.add(panelLabel);
+		JPanel mainPanelWithLabel = new JPanel();
+		mainPanelWithLabel.add(label);
+		label.setFont(new Font("Arial", Font.PLAIN, 25));
+		frame.add(BorderLayout.CENTER, mainPanelWithLabel);
+		frame.add(BorderLayout.NORTH, panelLabel);
 	}
 
 	// Открытие окна бруте-форса в выводом определенного варианта
@@ -382,9 +386,11 @@ public class GraphicUI extends CaesarCipher {
 				}
 			}
 		});
-		panelLabel.add(label);
-
-		frame.add(panelLabel);
+		JPanel mainPanelWithLabel = new JPanel();
+		mainPanelWithLabel.add(label);
+		label.setFont(new Font("Arial", Font.PLAIN, 34));
+		frame.add(BorderLayout.CENTER, mainPanelWithLabel);
+		frame.add(BorderLayout.NORTH, panelLabel);
 		frame.setVisible(true);
 	}
 
@@ -467,9 +473,11 @@ public class GraphicUI extends CaesarCipher {
 				}
 			}
 		});
-		panelLabel.add(label);
-
-		frame.add(panelLabel);
+		JPanel mainPanelWithLabel = new JPanel();
+		mainPanelWithLabel.add(label);
+		label.setFont(new Font("Arial", Font.PLAIN, 34));
+		frame.add(BorderLayout.CENTER, mainPanelWithLabel);
+		frame.add(BorderLayout.NORTH, panelLabel);
 		frame.setVisible(true);
 
 	}
