@@ -1,4 +1,4 @@
-<h1>Создание Первого проекта на языке Java - Crypto Analyzer (Метод шифрования - Шифр Цезаря)</h1> <br>
+<h1>Проект на языке Java - Crypto Analyzer (Метод шифрования - Шифр Цезаря)</h1> <br>
 День 1. - Создание файлов и логики в MainApp.java, BruteForce.java, Validator.java, CaesarCipher.java, Cipher.java. Логики в StatisticalAnalyzer.java - нет <br>
 День 2. - Создана логика в StatisticalAnalyzer.java и началась разработка UI <br>
 День 3. - Продолжается разработка UI <br>
